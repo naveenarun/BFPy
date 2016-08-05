@@ -7,6 +7,7 @@ import argparse
 # TODO: Output Brainfuck as a .py file
 
 # ISSUE: Uses naive parentheses search
+# 
 
 HELP_TEXT = 'Interpret a Brainfuck program.'
 HELP_FILENAME = 'Name of file containing brainfuck code'
