@@ -3,6 +3,8 @@ import argparse
 
 # TODO: Check validity of parentheses
 # TODO: Cache parentheses locations
+# TODO: Optimize runtime by condensing 
+# TODO: Output Brainfuck as a .py file
 
 parser = argparse.ArgumentParser(description='Interpret a brainfuck program.')
 parser.add_argument('-f',type=str,help='Name of file containing brainfuck code',required=True)
