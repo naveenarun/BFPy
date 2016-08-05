@@ -6,15 +6,22 @@ import argparse
 # TODO: Optimize runtime by condensing 
 # TODO: Output Brainfuck as a .py file
 
-parser = argparse.ArgumentParser(description='Interpret a brainfuck program.')
-parser.add_argument('-f',type=str,help='Name of file containing brainfuck code',required=True)
+# ISSUE: Uses naive parentheses search
+
+HELP_TEXT = 'Interpret a Brainfuck program.'
+HELP_FILENAME = 'Name of file containing brainfuck code'
+FILE_REQUIRED = True
+MEMORY_SIZE = 1024
+
+parser = argparse.ArgumentParser(description = HELP_TEXT)
+parser.add_argument('-f', type=str, help = HELP_FILENAME,required=FILE_REQUIRED)
 args = parser.parse_args()
 
 mystr = ''.join(open(args.f).readlines())
 
 mystr = filter(lambda x: x in '+-><.][,',mystr)
+mem = [0]*MEMORY_SIZE
 pointer = 0
-mem = [0]*1024
 read_pos = 0
 
 def find_opener(mystr,mypos):
@@ -36,6 +43,7 @@ def find_closer(mystr,mypos):
 		elif mystr[mypos] == ']':
 			counter -= 1
 	return mypos
+
 while read_pos < len(mystr):
 	curr_char = mystr[read_pos]
 	if curr_char == '+':
